@@ -39,7 +39,7 @@ module Rack
       end
 
       def build_header_hash(pairs)
-        if Rack.const_defined?(:Headers)
+        if Rack.const_defined?(:Headers, false)
           # Rack::Headers is only available from Rack 3 onward
           Headers.new.tap { |headers| pairs.each { |k, v| headers[k] = v } }
         else
